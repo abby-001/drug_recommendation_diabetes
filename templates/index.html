@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription Recommendation</title>
+    <style>
+        /* Style for the navigation bar */
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        /* Style for the links in the navigation bar */
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        /* Style for the active link */
+        .navbar a.active {
+            background-color: #04AA6D;
+        }
+
+        /* Style for the hover effect */
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Style for the form container */
+        .form-container {
+            margin: 50px auto;
+            width: 50%;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+
+        /* Style for form inputs */
+        input[type="number"],
+        input[type="text"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #04AA6D;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <a class="active" href="#home">DRUG RECOMMENDATION SYSTEM</a>
+    </div>
+
+    <!-- Form container -->
+    <div class="form-container">
+        <h2>Drug Recommendation</h2>
+        <form action="/recommendation" method="post">
+            <label for="age">Age:</label><br>
+            <input type="number" id="age" name="age"><br>
+            <label for="gender">Gender:</label><br>
+            <select name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select> <br>
+            <label for="weight">Weight(kg):</label><br>
+            <input type="number" id="weight" name="weight"><br>
+
+            <label for="height">Height(cm):</label><br>
+            <input type="number" id="height" name="height"><br>
+
+            <label for="bmi">BMI:</label><br>
+            <input type="text" id="bmi" name="bmi"><br>
+
+            <label for="fbs">FBS (mg/dL):</label><br>
+            <input type="number" id="fbs" name="fbs"><br>
+
+            <label for="hba1c">HbA1c (%):</label><br>
+            <input type="text" id="hba1c" name="hba1c"><br>
+
+            <label for="total_cholesterol">Total_cholesterol:</label><br>
+            <input type="number" id="total_cholesterol" name="total_cholesterol"><br>
+
+            <label for="hdl_cholesterol">HDL Cholesterol (mg/dL):</label><br>
+            <input type="number" id="hdl_cholesterol" name="hdl_cholesterol"><br>
+
+            <label for="ldl_cholesterol">LDL Cholesterol (mg/dL):</label><br>
+            <input type="number" id="ldl_cholesterol" name="ldl_cholesterol"><br>
+
+            <label for="triglycerides">Triglycerides (mg/dL):</label><br>
+            <input type="number" id="triglycerides" name="triglycerides"><br>
+
+            <label for="systolic_bp">Systolic BP (mmHg):</label><br>
+            <input type="number" id="systolic_bp" name="systolic_bp"><br>
+
+            <label for="diastolic_bp">Diastolic BP (mmHg):</label><br>
+            <input type="number" id="diastolic_bp" name="diastolic_bp"><br>
+
+
+            <label for="symptom">Symptom:</label><br>
+            <input type="text" id="symptoms" name="symptoms"><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

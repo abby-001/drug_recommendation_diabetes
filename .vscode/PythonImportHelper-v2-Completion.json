@@ -1,0 +1,210 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "TfidfVectorizer",
+        "importPath": "sklearn.feature_extraction.text",
+        "description": "sklearn.feature_extraction.text",
+        "isExtraImport": true,
+        "detail": "sklearn.feature_extraction.text",
+        "documentation": {}
+    },
+    {
+        "label": "cosine_similarity",
+        "importPath": "sklearn.metrics.pairwise",
+        "description": "sklearn.metrics.pairwise",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics.pairwise",
+        "documentation": {}
+    },
+    {
+        "label": "mysql.connector",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "mysql.connector",
+        "description": "mysql.connector",
+        "detail": "mysql.connector",
+        "documentation": {}
+    },
+    {
+        "label": "Error",
+        "importPath": "mysql.connector",
+        "description": "mysql.connector",
+        "isExtraImport": true,
+        "detail": "mysql.connector",
+        "documentation": {}
+    },
+    {
+        "label": "KMeans",
+        "importPath": "sklearn.cluster",
+        "description": "sklearn.cluster",
+        "isExtraImport": true,
+        "detail": "sklearn.cluster",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "base64",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "base64",
+        "description": "base64",
+        "detail": "base64",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib",
+        "description": "matplotlib",
+        "detail": "matplotlib",
+        "documentation": {}
+    },
+    {
+        "label": "dbconnection",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def dbconnection():\n    con = mq.connect(host='localhost', database='diabetis',user='root',password='root')\n    return con\n# Load dataset\ndf = pd.read_csv('diabetes_pres.csv')\n# Preprocess prescription data (e.g., lowercase, remove stopwords, etc.)\n# Implement your preprocessing steps here\n# TF-IDF Vectorization\ntfidf_vectorizer = TfidfVectorizer()\nprescription_tfidf = tfidf_vectorizer.fit_transform(df['Prescription/Treatment'].astype(str))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "recommend_similar_prescriptions",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def recommend_similar_prescriptions(age, gender, weight, height, bmi, fbs,hba1c, total_cholesterol, hdl_cholesterol, ldl_cholesterol, triglycerides, systolic_bp, diastolic_bp, symptoms):\n    # Combine input data into a single string (you can customize this)\n    input_data = ' '.join([str(age), gender, str(weight), str(height), str(bmi), str(fbs),str(hba1c), str(total_cholesterol), str(hdl_cholesterol), str(ldl_cholesterol), str(triglycerides), str(systolic_bp), str(diastolic_bp), symptoms])\n    # TF-IDF Vectorization for input data\n    input_tfidf = tfidf_vectorizer.transform([input_data])\n    # Calculate cosine similarity with input data\n    sim_scores = list(enumerate(cosine_similarity(input_tfidf, prescription_tfidf)[0]))\n    # Sort prescriptions based on similarity scores\n    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)\n    # Get top similar prescriptions",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def index():\n    return render_template('index.html')\ndef cluster():\n    # Read CSV data\n    data = pd.read_csv(\"diabetes_pres.csv\")\n    # Preprocessing (if needed)\n    # Example: scaling numerical features\n    numerical_features = ['Age', 'Weight (kg)', 'Height (cm)', 'BMI', 'FBS (mg/dL)', 'HbA1c (%)', 'Total Cholesterol (mg/dL)', 'HDL Cholesterol (mg/dL)', 'LDL Cholesterol (mg/dL)', 'Triglycerides (mg/dL)', 'Systolic BP (mmHg)', 'Diastolic BP (mmHg)']\n    data[numerical_features] = data[numerical_features].apply(lambda x: (x - x.mean()) / x.std())\n    # Clustering",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "cluster",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def cluster():\n    # Read CSV data\n    data = pd.read_csv(\"diabetes_pres.csv\")\n    # Preprocessing (if needed)\n    # Example: scaling numerical features\n    numerical_features = ['Age', 'Weight (kg)', 'Height (cm)', 'BMI', 'FBS (mg/dL)', 'HbA1c (%)', 'Total Cholesterol (mg/dL)', 'HDL Cholesterol (mg/dL)', 'LDL Cholesterol (mg/dL)', 'Triglycerides (mg/dL)', 'Systolic BP (mmHg)', 'Diastolic BP (mmHg)']\n    data[numerical_features] = data[numerical_features].apply(lambda x: (x - x.mean()) / x.std())\n    # Clustering\n    kmeans = KMeans(n_clusters=3)\n    data['cluster'] = kmeans.fit_predict(data[numerical_features])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "recommendation",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def recommendation():\n    age = int(request.form['age'])\n    gender = request.form['gender']\n    weight = int(request.form['weight'])\n    height = int(request.form['height'])\n    bmi = float(request.form['bmi'])\n    fbs = int(request.form['fbs'])\n    hba1c = float(request.form['hba1c'])\n    total_cholesterol = int(request.form['total_cholesterol'])\n    hdl_cholesterol = int(request.form['hdl_cholesterol'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\ndef dbconnection():\n    con = mq.connect(host='localhost', database='diabetis',user='root',password='root')\n    return con\n# Load dataset\ndf = pd.read_csv('diabetes_pres.csv')\n# Preprocess prescription data (e.g., lowercase, remove stopwords, etc.)\n# Implement your preprocessing steps here\n# TF-IDF Vectorization\ntfidf_vectorizer = TfidfVectorizer()",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "df = pd.read_csv('diabetes_pres.csv')\n# Preprocess prescription data (e.g., lowercase, remove stopwords, etc.)\n# Implement your preprocessing steps here\n# TF-IDF Vectorization\ntfidf_vectorizer = TfidfVectorizer()\nprescription_tfidf = tfidf_vectorizer.fit_transform(df['Prescription/Treatment'].astype(str))\n# Calculate cosine similarity matrix\ncosine_sim = cosine_similarity(prescription_tfidf, prescription_tfidf)\ndef recommend_similar_prescriptions(age, gender, weight, height, bmi, fbs,hba1c, total_cholesterol, hdl_cholesterol, ldl_cholesterol, triglycerides, systolic_bp, diastolic_bp, symptoms):\n    # Combine input data into a single string (you can customize this)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "tfidf_vectorizer",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "tfidf_vectorizer = TfidfVectorizer()\nprescription_tfidf = tfidf_vectorizer.fit_transform(df['Prescription/Treatment'].astype(str))\n# Calculate cosine similarity matrix\ncosine_sim = cosine_similarity(prescription_tfidf, prescription_tfidf)\ndef recommend_similar_prescriptions(age, gender, weight, height, bmi, fbs,hba1c, total_cholesterol, hdl_cholesterol, ldl_cholesterol, triglycerides, systolic_bp, diastolic_bp, symptoms):\n    # Combine input data into a single string (you can customize this)\n    input_data = ' '.join([str(age), gender, str(weight), str(height), str(bmi), str(fbs),str(hba1c), str(total_cholesterol), str(hdl_cholesterol), str(ldl_cholesterol), str(triglycerides), str(systolic_bp), str(diastolic_bp), symptoms])\n    # TF-IDF Vectorization for input data\n    input_tfidf = tfidf_vectorizer.transform([input_data])\n    # Calculate cosine similarity with input data",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "prescription_tfidf",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "prescription_tfidf = tfidf_vectorizer.fit_transform(df['Prescription/Treatment'].astype(str))\n# Calculate cosine similarity matrix\ncosine_sim = cosine_similarity(prescription_tfidf, prescription_tfidf)\ndef recommend_similar_prescriptions(age, gender, weight, height, bmi, fbs,hba1c, total_cholesterol, hdl_cholesterol, ldl_cholesterol, triglycerides, systolic_bp, diastolic_bp, symptoms):\n    # Combine input data into a single string (you can customize this)\n    input_data = ' '.join([str(age), gender, str(weight), str(height), str(bmi), str(fbs),str(hba1c), str(total_cholesterol), str(hdl_cholesterol), str(ldl_cholesterol), str(triglycerides), str(systolic_bp), str(diastolic_bp), symptoms])\n    # TF-IDF Vectorization for input data\n    input_tfidf = tfidf_vectorizer.transform([input_data])\n    # Calculate cosine similarity with input data\n    sim_scores = list(enumerate(cosine_similarity(input_tfidf, prescription_tfidf)[0]))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "cosine_sim",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "cosine_sim = cosine_similarity(prescription_tfidf, prescription_tfidf)\ndef recommend_similar_prescriptions(age, gender, weight, height, bmi, fbs,hba1c, total_cholesterol, hdl_cholesterol, ldl_cholesterol, triglycerides, systolic_bp, diastolic_bp, symptoms):\n    # Combine input data into a single string (you can customize this)\n    input_data = ' '.join([str(age), gender, str(weight), str(height), str(bmi), str(fbs),str(hba1c), str(total_cholesterol), str(hdl_cholesterol), str(ldl_cholesterol), str(triglycerides), str(systolic_bp), str(diastolic_bp), symptoms])\n    # TF-IDF Vectorization for input data\n    input_tfidf = tfidf_vectorizer.transform([input_data])\n    # Calculate cosine similarity with input data\n    sim_scores = list(enumerate(cosine_similarity(input_tfidf, prescription_tfidf)[0]))\n    # Sort prescriptions based on similarity scores\n    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)",
+        "detail": "app",
+        "documentation": {}
+    }
+]

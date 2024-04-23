@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription Recommendation</title>
+    <style>
+        /* Style for the navigation bar */
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        /* Style for the links in the navigation bar */
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        /* Style for the active link */
+        .navbar a.active {
+            background-color: #04AA6D;
+        }
+
+        /* Style for the hover effect */
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a class="active" href="#recommendations">Recommended Prescriptions</a>
+    </div>
+
+    <h1>Prescription Recommendation</h1>
+    <h2 id="recommendations">Recommended Prescriptions:</h2>
+    <ul>
+        {% for recommendation in recommendations %}
+            <li>{{ recommendation[0] }} - Dosage: {{ recommendation[1] }}, Frequency: {{ recommendation[2] }}, Duration: {{ recommendation[3] }} weeks</li>
+        {% endfor %}
+    </ul>
+    <br><br>
+    <center>
+        <h1>Cluster Visualization</h1>
+        <!-- Display cluster visualization image -->
+        <img src="{{ cluster_image }}" alt="Cluster Image">
+    </center>
+</body>
+</html>
